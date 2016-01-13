@@ -6,7 +6,7 @@ var Artist = function(info){
 };
 
 Artist.fetch = function(){
-  var request = $.getJSON("http://localhost:3000/artists")
+  var request = $.getJSON("/artists")
   .then(function(response) {
     var artists = [];
     for(var i = 0; i < response.length; i++){
@@ -22,7 +22,7 @@ Artist.fetch = function(){
 
 Artist.prototype = {
   fetchSongs: function(){
-    var url = "http://localhost:3000/artists/" + this.id + "/songs";
+    var url = "/artists/" + this.id + "/songs";
     var request = $.getJSON(url)
     .then(function(response){
       var songs = [];
@@ -39,7 +39,7 @@ Artist.prototype = {
   update: function(artistData) {
     var self = this;
 
-    var url = "http://localhost:3000/artists/" + this.id;
+    var url = "/artists/" + this.id;
     var request = $.ajax({
       url: url,
       method: "patch",
